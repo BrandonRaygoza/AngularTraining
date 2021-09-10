@@ -1,0 +1,10 @@
+<p>add-product works!</p>
+
+<div>
+  Nombre: <input type="text"    [(ngModel)]="productName"/>
+  Precio: <input type="number"  [(ngModel)]="productPrice"/>
+  <button (click)="addproduct()">Add</button>
+</div>
+
+<!-- <app-list-products [products]="products"></app-list-products> -->
+<app-list-products (finishOrderEvent)="onFinishOrder()" [products]="products"></app-list-products>

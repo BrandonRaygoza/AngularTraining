@@ -1,0 +1,23 @@
+<p>view-notes works!</p>
+
+<table class="zui-table">
+  <thead>
+    <tr>
+      <th >Id</th>
+      <th >Title</th>
+      <th >Content</th>
+      <th >Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let note of notes">
+      <td>{{note._id}}</td>
+      <td>{{note.title}}</td>
+      <td>{{note.content}}</td>
+      <td>
+        <button (click)="onDeleteNote(note._id)">Delete</button>
+        <button (click)="onGoToUpdateNote(note._id)">Update</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

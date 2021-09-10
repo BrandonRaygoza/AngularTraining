@@ -1,0 +1,21 @@
+
+Interpolation
+<h1>{{dato}}</h1>
+<p>menu-lateral works!</p>
+
+Property binding
+innerText = target property
+dato = template expression
+<p [innerText] = "dato"></p>
+
+<!-- Para la clase seleccionado, hay que activarla (esto seria de manera particular, nada general) -->
+<p [class.seleccionado] = "isSelected" >Este texto puede o no estar seleccionado</p>
+
+<!-- Para aplicar multiples clases simultaneamente -->
+<p [class]="currentClasses">Texto configurado con estilos</p>
+
+<!-- (change): target event. Is the event that we are listening to.
+checkboxChange(): Is called the template statement. Corresponds to the onClick public method of the component.
+ngModel: Permite relacionar la variable isSelected del componenten con el checkbox html
+El valor de la variable va a cambiar por si solo aunque no este el evento change-->
+Seleccionado: <input type="checkbox" id="seleccionadoOno" [(ngModel)]="isSelected" (change)="checkboxChange()"/>

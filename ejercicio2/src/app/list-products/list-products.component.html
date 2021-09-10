@@ -1,0 +1,26 @@
+<p>list-products works!</p>
+
+<h3>Total : ${{getTotal()}}</h3>
+<button (click)="finishOrderEvent.emit()">Terminar orden</button>
+
+<table class="zui-table">
+  <thead>
+    <tr>
+      <th >Product name</th>
+      <th >Product price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.name}}</td>
+      <td>${{product.price}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <ul *ngFor="let product of products">
+  <li>{{product.name}} </li>
+  <li>{{product.price}} </li>
+</ul> -->
+
+

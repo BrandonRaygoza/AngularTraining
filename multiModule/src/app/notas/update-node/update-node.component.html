@@ -1,0 +1,12 @@
+<p>update-node works!</p>
+<form *ngIf="updateNote._id != null">
+  <h3>Actualizar nota</h3>
+  <label>Id: </label><br>
+  <input type="text" value={{updateNote._id}} name="updateNote" readonly/><br><br>
+  <label>Title: </label><br>
+  <input type="text" [(ngModel)]="updateNote.title" name="updateNote"/><br>
+  <label>Content: </label><br>
+  <input type="text" [(ngModel)]="updateNote.content" name="updateNote"/><br>
+  <button (click)="onUpdateNote()">Update</button>
+</form>
+

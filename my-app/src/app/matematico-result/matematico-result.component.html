@@ -1,0 +1,14 @@
+<p>matematico-result works!</p>
+
+<p *ngIf="result > 0 ; else isZero" >Hola, soy otro componente y recibi: {{result}} </p>
+
+<!-- isZero is a template reference variable
+An ng-template is a element that it can be used to render content on the screen.
+These elements are not rendered automatically on the screen, but structural directives trigger them
+-->
+<ng-template #isZero>
+  <p>The current result is zero</p>
+</ng-template>
+
+<!-- Emite el evento a otro component -->
+<button (click)="clearInputs.emit()">Limpiar entradas</button>

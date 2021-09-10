@@ -1,0 +1,56 @@
+<p>listado-facturas works!</p>
+
+<!-- BUSCAR FACTURA POR ID -->
+Buscar: <input type="number" placeholder="Buscar por id..." [(ngModel)]="id">
+<button (click)="onSearchFactura()">Buscar</button>
+<button (click)="onDisplayForm()">Agregar factura</button>
+
+<br>
+<br>
+<!-- AGREGAR FACTURA -->
+<form *ngIf="isFormAddTrigger == true">
+  <label>Id: </label><br>
+  <input type="number" [(ngModel)]="newFactura.id"        name="nuevaFactura"/><br>
+  <label>Cliente id: </label><br>
+  <input type="number" [(ngModel)]="newFactura.clientId"  name="nuevaFactura"/><br>
+  <label>Monto: </label><br>
+  <input type="number" [(ngModel)]="newFactura.amount"    name="nuevaFactura"/><br>
+
+  <button (click)="onAddFactura()">Agregar</button>
+  <button (click)="onDisplayForm()">Cancelar</button>
+</form>
+
+<!-- DESPLIEGUE DE FACTURA BUSCADA POR ID -->
+<div *ngIf="isFacturaSearched == true">
+  Resultados:
+  <ul>
+    <li>Factura Id: {{facturaBuscada.id}}</li>
+    <ul>
+      <li>Date: {{facturaBuscada.date | date: 'mediumDate'}}</li>
+      <li>Client id: {{facturaBuscada.clientId}}</li>
+      <li>Amount: ${{facturaBuscada.amount}}</li>
+    </ul>
+  </ul>
+  <button (click)="onHideSearchedFactura()">Ocultar</button>
+</div>
+
+<!-- DESPLIEGUE DE FACTURAS -->
+<br>
+<table class="zui-table">
+  <thead>
+    <tr>
+      <th >Id</th>
+      <th >Date</th>
+      <th >Client id</th>
+      <th >Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let factura of facturas">
+      <td>{{factura.id}}</td>
+      <td>{{factura.date | date: 'mediumDate'}}</td>
+      <td>{{factura.clientId}}</td>
+      <td>${{factura.amount}}</td>
+    </tr>
+  </tbody>
+</table>

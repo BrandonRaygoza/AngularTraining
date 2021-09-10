@@ -1,0 +1,37 @@
+<p>Fecha de hoy: {{today | date:'fullDate'}}</p>
+
+<div class="operands">
+  Operand 1: <input type="number" [(ngModel)]="a" (keyup)="doOperation()"/>
+  Operand 2: <input type="number" [(ngModel)]="b" (keyup)="doOperation()"/>
+</div><br>
+
+<div *ngFor="let oper of operations; index as val">
+  <input value={{val+1}} type="radio"  name="operacion"  [(ngModel)]="opc" (change)="doOperation()" checked/> {{oper}}<br>
+</div>
+
+<button (click) = "doOperation()">Calcular</button>
+<br>
+
+<textarea readonly>
+  {{result}}
+</textarea>
+
+<!-- Passing data using input binding
+  el componenten matematico le esta pasando a app-matematico-result el valor de result.
+  result se va a guardar en la variable result que esta en el componente matematico-result
+-->
+<!-- <app-matematico-result [result]="result"></app-matematico-result> -->
+
+<!-- Listening for events using output binding
+    Este componente (matematico) que esta llamando a este otro componente (matematico-result), esta escuchando un evento proveniente del componente que es llamado.
+    Matematico result esta emitiendo un evento, entonces matematico al escuchar este evento, ejecuta su onClearInputs().
+-->
+<app-matematico-result (clearInputs)="onClearInputs()" [result]="result"></app-matematico-result>
+
+<!--
+  clearInputs: target event. es el evento emitido.
+  onClearInputs: template statement. procedimiento a ejectuar cuando se escuche el evento.
+
+  Se coloca en la misma linea del componente que emite el evento, pues el componente padre esta llamando a este componente emisor. Entonces cuando el componente emita el evento, el componente madre escuche el evento, ejecutara algun metodo asignado para ese evento.
+
+-->

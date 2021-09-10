@@ -1,0 +1,51 @@
+
+<h1>Notas component</h1>
+
+Agregar nota: <button (click)="onDisplayAddForm()">Add note</button><br><br>
+
+<form *ngIf="displayAddForm == true">
+  <h3>Nueva nota</h3>
+  <!-- <label>Id: </label><br>
+  <input type="hidden" [(ngModel)]="updateNote._id" name="updateNote"/><br> -->
+  <label>Title: </label><br>
+  <input type="text" [(ngModel)]="newNote.title" name="addNote"/><br>
+  <label>Content: </label><br>
+  <input type="text" [(ngModel)]="newNote.content" name="addNote"/><br>
+  <button (click)="onAddNote()">Confirm</button>
+  <button (click)="onDisplayAddForm()">Cancel</button> <br>
+  <br>
+</form>
+
+<form *ngIf="displayUpdateForm == true">
+  <h3>Actualizar nota</h3>
+  <label>Id: </label><br>
+  <input type="text" value={{updateNote._id}} name="updateNote" readonly/><br><br>
+  <label>Title: </label><br>
+  <input type="text" [(ngModel)]="updateNote.title" name="updateNote"/><br>
+  <label>Content: </label><br>
+  <input type="text" [(ngModel)]="updateNote.content" name="updateNote"/><br>
+  <button (click)="onUpdateNote()">Update</button>
+  <button (click)="onDisplayUpdateForm('')">Cancel</button><br><br>
+</form>
+
+<table class="zui-table">
+  <thead>
+    <tr>
+      <th >Id</th>
+      <th >Title</th>
+      <th >Content</th>
+      <th >Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let note of notes">
+      <td>{{note._id}}</td>
+      <td>{{note.title}}</td>
+      <td>{{note.content}}</td>
+      <td>
+        <button (click)="onDeleteNote(note._id)">Delete</button>
+        <button (click)="onDisplayUpdateForm(note._id)">Update</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

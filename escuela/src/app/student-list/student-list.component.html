@@ -1,0 +1,46 @@
+<p>student-list works!</p>
+
+<div>
+  <h3>Select display form: </h3>
+  <input type="radio" value="0" [(ngModel)] = "listOpc"> List
+  <input type="radio" value="1" [(ngModel)] = "listOpc"> Table
+</div>
+
+<div class="display">
+  <div *ngIf="listOpc == '0'; else asTable">
+    <ul *ngFor="let student of students">
+      <li>Name: {{student.name}}
+        <ul>
+          <li>Last name: {{student.lastName}}</li>
+          <li>E-mail: {{student.email}}</li>
+          <li>Entry date: {{student.entryDate | date:'mediumDate'}} </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <ng-template #asTable>
+      <table *ngIf="listOpc == '1'" class="zui-table">
+        <thead>
+          <tr>
+            <th ></th>
+            <th >Name</th>
+            <th >Last name</th>
+            <th >E-mail</th>
+            <th >Entry date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students; index as num">
+            <td>{{num+1}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.lastName}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.entryDate | date:'mediumDate' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </div>
+</div>

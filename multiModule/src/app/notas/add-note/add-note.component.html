@@ -1,0 +1,13 @@
+<p>add-note works!</p>
+
+<form>
+  <h3>Nueva nota</h3>
+  <!-- <label>Id: </label><br>
+  <input type="hidden" [(ngModel)]="updateNote._id" name="updateNote"/><br> -->
+  <label>Title: </label><br>
+  <input type="text" [(ngModel)]="newNote.title" name="addNote"/><br>
+  <label>Content: </label><br>
+  <input type="text" [(ngModel)]="newNote.content" name="addNote"/><br>
+  <button (click)="onAddNote()">Confirm</button>
+  <br>
+</form>
